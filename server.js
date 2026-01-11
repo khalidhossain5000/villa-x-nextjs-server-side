@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import express from 'express'
 import dotenv from 'dotenv'
+import cors from 'cors'
+import authRoutes from './routes/authRoutes.js'
 // Configure dotenv
 dotenv.config();
 
@@ -8,6 +10,15 @@ const app = express()
 const port = process.env.PORT || 5000;
 
 app.use(express.json());
+// Middleware
+app.use(
+  cors({
+    origin: "http://localhost:3000", 
+    credentials: true, 
+  })
+);
+//user registertation
+app.use("/api/auth", authRoutes);
 //mongoDb and mongoose connection starts here
 
 try{
