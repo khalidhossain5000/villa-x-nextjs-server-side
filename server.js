@@ -3,6 +3,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import authRoutes from './routes/authRoutes.js'
+import roomRoutes from './routes/roomRoutes.js'
 // Configure dotenv
 dotenv.config();
 
@@ -19,6 +20,15 @@ app.use(
 );
 //user registertation
 app.use("/api/auth", authRoutes);
+
+
+//room related api starts over here
+app.use("/api",roomRoutes)
+
+
+
+
+
 //mongoDb and mongoose connection starts here
 
 try{
@@ -34,7 +44,7 @@ catch (error) {
 
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World! this is villa x server')
 })
 
 app.listen(port, () => {

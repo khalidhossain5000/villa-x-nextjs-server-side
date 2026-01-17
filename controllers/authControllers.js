@@ -32,3 +32,33 @@ export const registerUser = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+
+
+
+// Get user role by email
+export const getUserRole = async (req, res) => {
+  try {
+    const { email } = req.query;
+
+    // validation
+    if (!email) {
+      return res.status(400).json({ error: "Email query is required" });
+    }
+
+    // find user
+    const user = await User.findOne({ email }).select("email userRole");
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // response
+    res.status(200).json({
+      email: user.email,
+      userRole: user.userRole,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
