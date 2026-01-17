@@ -36,12 +36,5 @@ export const roomSchema = z.object({
   to: z
     .string({ required_error: "End date is required" }),
 
-  hostInfo: z.object({
-    name: z
-      .string()
-      .nonempty({ message: "Host name is required" }),
-    email: z
-      .string()
-      .email({ message: "Invalid host email" }),
-  }),
+ 
 });

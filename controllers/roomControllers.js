@@ -1,17 +1,20 @@
+import roomData from "../models/room.js";
+
 export const addRoom = async (req, res) => {
   try {
-    const roomData = req.body;
+    const rooms = req.body;
 
-    const newRoom = new Room(roomData);
+    const newRoom = new roomData(rooms);
 
     const savedRoom = await newRoom.save();
-
+    console.log(rooms, "this is room data from controllers");
     res.status(201).json({
       success: true,
       message: "Room added successfully",
       data: savedRoom,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({
       success: false,
       message: "Failed to add room",
@@ -19,3 +22,24 @@ export const addRoom = async (req, res) => {
     });
   }
 };
+
+
+export const getAllRooms=async(req,res)=>{
+  try{
+    const allRoomData=await roomData.find().sort({createdAt:-1})
+    res.status(200).json({
+      success:true,
+      allRoomData
+    })
+  }
+
+  catch (error) {
+    console.log(error)
+    res.status(500).json({
+      
+      success: false,
+      message: "Failed to fetch rooms",
+      error: error.message,
+    });
+  }
+}

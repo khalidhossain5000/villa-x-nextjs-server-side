@@ -49,11 +49,15 @@ const roomSchema = new mongoose.Schema(
     hostInfo: {
       name: {
         type: String,
-        required: true,
+       
       },
       email: {
         type: String,
-        required: true,
+       
+      }, 
+      photoUrl: {
+        type: String,
+        
       },
     },
   },
