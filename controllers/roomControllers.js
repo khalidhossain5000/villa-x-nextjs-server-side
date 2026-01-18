@@ -23,23 +23,27 @@ export const addRoom = async (req, res) => {
   }
 };
 
+export const getAllRooms = async (req, res) => {
+  try {
+    const { category } = req.query;
 
-export const getAllRooms=async(req,res)=>{
-  try{
-    const allRoomData=await roomData.find().sort({createdAt:-1})
+    let query = {};
+    console.log(category, "this is category", query, "this is query",req.query,'this is whole query');
+    if (category && category !=='null') {
+      query.category = category;
+    }
+
+    const allRoomData = await roomData.find(query).sort({ createdAt: -1 });
     res.status(200).json({
-      success:true,
-      allRoomData
-    })
-  }
-
-  catch (error) {
-    console.log(error)
+      success: true,
+      allRoomData,
+    });
+  } catch (error) {
+    console.log(error);
     res.status(500).json({
-      
       success: false,
       message: "Failed to fetch rooms",
       error: error.message,
     });
   }
-}
+};
