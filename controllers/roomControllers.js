@@ -25,14 +25,16 @@ export const addRoom = async (req, res) => {
 
 export const getAllRooms = async (req, res) => {
   try {
-    const { category } = req.query;
+    const { category,email } = req.query;
 
     let query = {};
-    console.log(category, "this is category", query, "this is query",req.query,'this is whole query');
+    console.log(category, email,"this is category", query, "this is query",req.query,'this is whole query');
     if (category && category !=='null') {
       query.category = category;
     }
-
+    if (email) {
+          query["hostInfo.email"] = email;
+    }
     const allRoomData = await roomData.find(query).sort({ createdAt: -1 });
     res.status(200).json({
       success: true,
