@@ -49,3 +49,19 @@ export const getAllRooms = async (req, res) => {
     });
   }
 };
+
+
+
+
+
+
+
+
+
+export const delteMyListingRoom=async(req,res)=>{
+  const id=req.params.id
+  console.log(req,'id to be delteds',id)
+  
+  const result =await roomData.findByIdAndDelete(id)
+  res.send({result,message:'room delted successfully here over'})
+}
