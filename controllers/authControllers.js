@@ -80,15 +80,16 @@ export const updateUser = async (req, res) => {
   console.log(req.body, "this isre", req.params);
   try {
     const { userEmail } = req.params;
+    const userStaus = await User.find({ email: userEmail });
 
-    const updateUser = await User.findOneAndUpdate(
-      { email: userEmail },
-      req.body,
-      { new: true },
-    );
-    res
-      .status(200)
-      .json({ message: "user updated successfully", updatedUser: updateUser });
+    if (userStaus[0].status ==="requested")
+      return res.status(400).json({ error: "already requested once" });
+   
+
+    const result = await User.findOneAndUpdate({ email: userEmail }, req.body, {
+      new: true,
+    });
+   res.status(200).json({ message: "user updated successfully",updatedUser: result });
   } catch (error) {
     console.log(error, "patch error");
 
