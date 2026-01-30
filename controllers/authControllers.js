@@ -15,7 +15,8 @@ export const registerUser = async (req, res) => {
     const newUser = new User({
       fullName,
       email,
-      userRole: userRole, // default role
+      userRole: userRole, // default role,
+      status: "verified",
     });
 
     // Save user to MongoDB
@@ -60,15 +61,37 @@ export const getUserRole = async (req, res) => {
   }
 };
 //get user data for frontend
-export const getUserData=async (req,res)=>{
-  try{  
-    const user=await User.find({})
-    res.status(200).json({message:'user data fetched successfully',userData:user})
-  }
+export const getUserData = async (req, res) => {
+  try {
+    const user = await User.find({});
+    res
+      .status(200)
+      .json({ message: "user data fetched successfully", userData: user });
+  } catch (error) {
+    console.log(error, "get user data u error");
 
-  catch(error){
-    console.log(error,'get user data u error')
-
-    res.status(500).json({error:'server error',errorMessage:error})
+    res.status(500).json({ error: "server error", errorMessage: error });
   }
-}
+};
+
+// patch request for requested user for beacoming host
+
+export const updateUser = async (req, res) => {
+  console.log(req.body, "this isre", req.params);
+  try {
+    const { userEmail } = req.params;
+
+    const updateUser = await User.findOneAndUpdate(
+      { email: userEmail },
+      req.body,
+      { new: true },
+    );
+    res
+      .status(200)
+      .json({ message: "user updated successfully", updatedUser: updateUser });
+  } catch (error) {
+    console.log(error, "patch error");
+
+    res.status(500).json({ error: "server error", errorMessage: error });
+  }
+};

@@ -18,6 +18,10 @@ const userSchema=new mongoose.Schema(
            enum: ["admin", "host", "guest"],
         default:'guest'
     },
+    status:{
+        type:String,
+        default:'verified'
+    }
 
 }, { timestamps: true })
 
