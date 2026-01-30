@@ -59,6 +59,16 @@ export const getUserRole = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
-
-
 //get user data for frontend
+export const getUserData=async (req,res)=>{
+  try{  
+    const user=await User.find({})
+    res.status(200).json({message:'user data fetched successfully',userData:user})
+  }
+
+  catch(error){
+    console.log(error,'get user data u error')
+
+    res.status(500).json({error:'server error',errorMessage:error})
+  }
+}
