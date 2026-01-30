@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
-const userSchema=new mongoose.Schema({
+const userSchema=new mongoose.Schema(
+    {
     fullName:{
         type:String,
         required:true,
@@ -16,8 +17,9 @@ const userSchema=new mongoose.Schema({
         type:String,
            enum: ["admin", "host", "guest"],
         default:'guest'
-    }
-})
+    },
+
+}, { timestamps: true })
 
 
 const User=mongoose.model('User',userSchema)

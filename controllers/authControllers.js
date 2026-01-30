@@ -15,8 +15,7 @@ export const registerUser = async (req, res) => {
     const newUser = new User({
       fullName,
       email,
-      userRole: userRole , // default role
-      createdAt: new Date(),
+      userRole: userRole, // default role
     });
 
     // Save user to MongoDB
@@ -32,8 +31,6 @@ export const registerUser = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
-
-
 
 // Get user role by email
 export const getUserRole = async (req, res) => {
@@ -62,3 +59,6 @@ export const getUserRole = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+
+
+//get user data for frontend
