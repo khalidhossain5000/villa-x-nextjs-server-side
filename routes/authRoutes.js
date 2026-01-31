@@ -1,7 +1,7 @@
 import express from 'express'
 
 import { registerUserSchema } from '../validation/userValidation.js'
-import { getUserData, getUserRole, registerUser, updateUser } from '../controllers/authControllers.js'
+import { getUserData, getUserRole, registerUser, updateUser, updateUserRoleAdminApi } from '../controllers/authControllers.js'
 import { validateRequest } from '../middleware/registerUserValidate.js'
 
 const router=express.Router()
@@ -15,4 +15,5 @@ router.get("/role", getUserRole);
 router.get('/all-users',getUserData)
 
 router.patch('/update-user/:userEmail',updateUser)
+router.patch('/update-user-role-admin/:id/role',updateUserRoleAdminApi)
 export default router

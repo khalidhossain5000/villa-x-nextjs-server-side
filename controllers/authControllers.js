@@ -96,3 +96,23 @@ export const updateUser = async (req, res) => {
     res.status(500).json({ error: "server error", errorMessage: error });
   }
 };
+
+
+//PATCH REQUST FOR MAKING USER ROLE TO HOST AND ADMINA DN REMOVING HOST SECURITY FOR ADMIN ONLY MIDDLEWARE WILL BE ADDED HRER 
+
+export const updateUserRoleAdminApi=async(req,res)=>{
+
+  try{
+    const {id}=req.params
+    const {role}=req.body
+
+    const result=await User.findByIdAndUpdate(id,{userRole:role},{new:true})
+console.log(id,role,'this is did hjsdhg')
+    res.status(200).json({message:"user role updated successfully",updatedUser:result})
+  }
+  catch (error) {
+    console.log(error, "patch error");
+
+    res.status(500).json({ error: "server error", errorMessage: error });
+  }
+}
