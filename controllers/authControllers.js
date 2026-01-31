@@ -74,7 +74,7 @@ export const getUserData = async (req, res) => {
   }
 };
 
-// patch request for requested user for beacoming host
+// patch request for requested user for beacoming host over here
 
 export const updateUser = async (req, res) => {
   console.log(req.body, "this isre", req.params);
