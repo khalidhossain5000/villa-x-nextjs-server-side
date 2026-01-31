@@ -60,6 +60,34 @@ export const getUserRole = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+
+//get user more info for profile from db
+export const getUserInfo = async (req, res) => {
+  try {
+    const { email } = req.query;
+
+    // validation
+    if (!email) {
+      return res.status(400).json({ error: "Email query is required" });
+    }
+
+    // find user
+    const user = await User.findOne({ email })
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // response
+    res.status(200).json({
+    singleUser:user,
+    message:"user data fetched successfully"
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
 //get user data for frontend
 export const getUserData = async (req, res) => {
   try {
@@ -106,8 +134,8 @@ export const updateUserRoleAdminApi=async(req,res)=>{
     const {id}=req.params
     const {role}=req.body
 
-    const result=await User.findByIdAndUpdate(id,{userRole:role},{new:true})
-console.log(id,role,'this is did hjsdhg')
+    const result=await User.findByIdAndUpdate(id,{userRole:role,status:'verified'},{new:true})
+
     res.status(200).json({message:"user role updated successfully",updatedUser:result})
   }
   catch (error) {
