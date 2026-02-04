@@ -28,7 +28,7 @@ export const getAllRooms = async (req, res) => {
     const { category,email } = req.query;
 
     let query = {};
-    console.log(category, email,"this is category", query, "this is query",req.query,'this is whole query');
+   
     if (category && category !=='null') {
       query.category = category;
     }
