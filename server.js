@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import authRoutes from './routes/authRoutes.js'
 import roomRoutes from './routes/roomRoutes.js'
+import paymentRoutes from './routes/paymentRoutes.js'
 // Configure dotenv
 dotenv.config();
 
@@ -27,7 +28,8 @@ app.use("/api",roomRoutes)
 
 
 
-
+//stripe payment routes
+app.use('/api/payments',paymentRoutes)
 
 //mongoDb and mongoose connection starts here
 

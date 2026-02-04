@@ -5,3 +5,6 @@ const router =express.Router()
 
 
 router.post('/create-payment-intent',createStripePaymentIntent)
+
+
+export default router
