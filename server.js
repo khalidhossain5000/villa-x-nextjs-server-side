@@ -5,6 +5,7 @@ import cors from 'cors'
 import authRoutes from './routes/authRoutes.js'
 import roomRoutes from './routes/roomRoutes.js'
 import paymentRoutes from './routes/paymentRoutes.js'
+import bookingRoutes from './routes/bookingRoutes.js'
 // Configure dotenv
 dotenv.config();
 
@@ -31,6 +32,8 @@ app.use("/api",roomRoutes)
 //stripe payment routes
 app.use('/api/payments',paymentRoutes)
 
+//room booking realted routes here
+app.use("/api/bookings", bookingRoutes);
 //mongoDb and mongoose connection starts here
 
 try{
