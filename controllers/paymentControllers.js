@@ -1,6 +1,10 @@
 import Stripe from "stripe";
-
+import dotenv from 'dotenv'
+// Configure dotenv
+dotenv.config();
+console.log(process.env.STRIPE_KEY,'this is key')
 const stripe = new Stripe(process.env.STRIPE_KEY);
+
 
 //create payment inter for stripe
 
