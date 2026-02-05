@@ -33,7 +33,7 @@ app.use("/api",roomRoutes)
 app.use('/api/payments',paymentRoutes)
 
 //room booking realted routes here
-app.use("/api/bookings", bookingRoutes);
+app.use("/api", bookingRoutes);
 //mongoDb and mongoose connection starts here
 
 try{
