@@ -39,7 +39,7 @@ console.log("Received booking data:", bookingData)
 
 export const getBookedDatesByRoom = async (req, res) => {
   const { roomId } = req.params;
-console.log(roomId,'this is room id here')
+
   const bookings = await bookingInfo.find({
     roomId,
     status: "reserved",
@@ -47,3 +47,16 @@ console.log(roomId,'this is room id here')
 
   res.send(bookings);
 };
+
+
+
+export const getMyBookings=async(req,res)=>{
+  const {email}=req.params
+
+  const myBookings = await bookingInfo.find({'guest.email':email})
+
+  res.status(200).json({
+    message:"My Bookings",
+    myBookings
+  })
+}
