@@ -37,3 +37,13 @@ console.log("Received booking data:", bookingData)
 };
 
 
+export const getBookedDatesByRoom = async (req, res) => {
+  const { roomId } = req.params;
+console.log(roomId,'this is room id here')
+  const bookings = await bookingInfo.find({
+    roomId,
+    status: "reserved",
+  }).select("from to -_id");
+
+  res.send(bookings);
+};
