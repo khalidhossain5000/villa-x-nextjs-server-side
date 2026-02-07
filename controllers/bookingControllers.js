@@ -23,7 +23,7 @@ console.log("Received booking data:", bookingData)
       });
     }
 
-    // 2️⃣ Save booking
+   
     const booking = await bookingInfo.create(bookingData);
 
     res.status(201).json({
