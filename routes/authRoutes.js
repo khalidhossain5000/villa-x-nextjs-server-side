@@ -14,7 +14,7 @@ router.post('/register',validateRequest(registerUserSchema),registerUser)
 // get role by email
 router.get("/role",verifyFbToken, getUserRole);
 
-router.get('/all-users', verifyFbToken , verifyAdmin ,     getUserData)
+router.get('/all-users'  , verifyFbToken,  verifyAdmin,   getUserData)
 router.get('/single-users',getUserInfo)
 
 router.patch('/update-user/:userEmail',updateUser)
