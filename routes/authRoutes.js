@@ -4,6 +4,7 @@ import { registerUserSchema } from '../validation/userValidation.js'
 import { getUserData, getUserInfo, getUserRole, registerUser, updateUser, updateUserRoleAdminApi } from '../controllers/authControllers.js'
 import { validateRequest } from '../middleware/registerUserValidate.js'
 import { verifyFbToken } from '../middleware/verifyFbToken.js'
+import { verifyAdmin } from '../middleware/verifyAdmin.js'
 
 const router=express.Router()
 
@@ -13,7 +14,7 @@ router.post('/register',validateRequest(registerUserSchema),registerUser)
 // get role by email
 router.get("/role",verifyFbToken, getUserRole);
 
-router.get('/all-users',getUserData)
+router.get('/all-users', verifyFbToken , verifyAdmin ,     getUserData)
 router.get('/single-users',getUserInfo)
 
 router.patch('/update-user/:userEmail',updateUser)
