@@ -18,8 +18,13 @@ const roomCancelRequestSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    status: {
+      type: String,
+      enum: ["requested", "approved", "rejected"],
+      default: "requested",
+    },
   },
   { timestamps: true },
 );
 
-export default mongoose.model('RoomCancelRequest',roomCancelRequestSchema)
+export default mongoose.model("RoomCancelRequest", roomCancelRequestSchema);

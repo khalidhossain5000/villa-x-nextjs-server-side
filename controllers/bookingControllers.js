@@ -60,3 +60,21 @@ export const getMyBookings=async(req,res)=>{
     myBookings
   })
 }
+
+
+
+
+
+//delte booking upon host approval of cancel request
+export const deleteBooking=async(req,res)=>{
+  const {bookingId}=req.params
+
+  const deletedBooking=await bookingInfo.findByIdAndDelete(bookingId)
+
+  res.status(200).json({
+    message:"Booking deleted successfully",
+    deletedBooking
+  })
+}
+
+
