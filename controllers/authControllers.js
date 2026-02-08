@@ -35,6 +35,7 @@ export const registerUser = async (req, res) => {
 
 // Get user role by email
 export const getUserRole = async (req, res) => {
+  
   try {
     const { email } = req.query;
 
