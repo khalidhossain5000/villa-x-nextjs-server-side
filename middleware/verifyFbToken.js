@@ -1,7 +1,14 @@
 export const verifyFbToken=async(req,res,next)=>{
-    const fbToken=req.headers
-console.log('hello from middleware')
-    console.log("Received FB token: in middleware", fbToken);
+    const authHeader=req.headers.authorization
+
+    const token=authHeader.split(' ')[1]
+
+    if(!authHeader || !token) {
+        return res.status(401).send({
+            message:'Unauthorized Access'
+        })
+    }
+  //verify tooken
 
     next()
 }
