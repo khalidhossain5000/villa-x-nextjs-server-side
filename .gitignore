@@ -4,3 +4,5 @@ dist
 dist-ssr
 
 .vercel
+
+villa-x-firebase-token-verification.json
