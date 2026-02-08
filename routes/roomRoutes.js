@@ -2,12 +2,14 @@ import { addRoom, delteMyListingRoom, getAllRooms } from "../controllers/roomCon
 import express from "express"
 import { validateRequest } from "../middleware/registerUserValidate.js";
 import { roomSchema } from "../validation/room.validation.js";
+import { verifyFbToken } from "../middleware/verifyFbToken.js";
+import { verifyHost } from "../middleware/verifyHost.js";
 
 const router=express.Router()
 
 
-router.post('/rooms',validateRequest(roomSchema),addRoom)
+router.post('/rooms',verifyFbToken,verifyHost,validateRequest(roomSchema),addRoom)
 // get all room data form public show
 router.get('/rooms',getAllRooms)
-router.delete('/rooms/:id',delteMyListingRoom)
+router.delete('/rooms/:id',verifyFbToken,verifyHost,delteMyListingRoom)
 export default router
