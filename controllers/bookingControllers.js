@@ -4,7 +4,7 @@ import bookingInfo from "../models/bookingInfo.js";
 export const createBooking = async (req, res) => {
   try {
     const bookingData = req.body;
-console.log("Received booking data:", bookingData)
+
     //  Date overlap check (IMPORTANT)
     const conflict = await bookingInfo.findOne({
       roomId: bookingData.roomId,
@@ -62,7 +62,18 @@ export const getMyBookings=async(req,res)=>{
 }
 
 
+//get mybooking data for each host like host who added room can see who booked their room so taht data get api this is 
 
+export const getHostBookingData=async(req,res)=>{
+  const {hostEmail}=req.params
+
+  const hostRoomBookedInfoData=await bookingInfo.find({hostEmail})
+
+  res.status(200).send({
+    message:"host room booking data fetch successfull",
+    hostRoomBookedInfoData
+  })
+}
 
 
 //delte booking upon host approval of cancel request
