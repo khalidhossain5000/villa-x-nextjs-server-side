@@ -2,11 +2,7 @@ import User from "../models/auth.js";
 
 
 export const verifyHost = async (req, res, next) => {
-  console.log(
-    "hello this is req decoded over here",
-    req.decoded,
-    "this decoded from req",
-  );
+  
   const hostEmail = req.decoded.email;
 
   try {

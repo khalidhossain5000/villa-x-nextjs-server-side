@@ -10,7 +10,7 @@ admin.initializeApp({
 
 export const verifyFbToken = async (req, res, next) => {
   const authHeader = req.headers.authorization;
-console.log(authHeader,'this is auth header over here')
+
   if (!authHeader) {
     return res.status(401).send({
       message: "Unauthorized Access",
@@ -18,7 +18,7 @@ console.log(authHeader,'this is auth header over here')
   }
 
   const token = authHeader.split(" ")[1];
-  console.log(token, "this is token");
+
   if (!token) {
     return res.status(401).send({
       message: "Unauthorized Access",

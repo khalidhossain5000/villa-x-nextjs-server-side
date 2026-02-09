@@ -2,11 +2,7 @@ import User from "../models/auth.js";
 
 
 export const verifyAdmin = async (req, res, next) => {
-  console.log(
-    "hello this is req decoded over here",
-    req.decoded,
-    "this decoded from req",
-  );
+  
   const adminEmail = req.decoded.email;
 
   try {
