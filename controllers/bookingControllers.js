@@ -76,7 +76,7 @@ export const getHostBookingData=async(req,res)=>{
 }
 
 
-//delte booking upon host approval of cancel request
+//delte booking upon host approval of cancel request is done here
 export const deleteBooking=async(req,res)=>{
   const {bookingId}=req.params
 
