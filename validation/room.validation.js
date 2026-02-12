@@ -27,10 +27,17 @@ export const roomSchema = z.object({
   description: z
     .string()
     .min(10, { message: "Description must be at least 10 characters long" }),
-  roomImage: z
+ 
+  thumbnailImage: z
     .string()
-    .url({ message: "Invalid image URL" }),
+    .url({ message: "Invalid thumbnail image URL" }),
 
+   roomImages: z
+    .array(
+      z.string().url({ message: "Invalid room image URL" })
+    )
+    .optional() // or remove optional if required
+    .default([]),
   from: z
     .string({ required_error: "Start date is required" }),
   to: z

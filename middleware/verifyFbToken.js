@@ -31,7 +31,7 @@ export const verifyFbToken = async (req, res, next) => {
   try {
     const decoded = await admin.auth().verifyIdToken(token);
     req.decoded = decoded;
-    console.log(decoded);
+    // console.log(decoded);
     next();
   } catch (error) {
     console.log(error, "verify error inside fb token");

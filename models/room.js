@@ -15,7 +15,7 @@ const roomSchema = new mongoose.Schema(
       required: true,
     },
     price: {
-      type: Number, 
+      type: Number,
       required: true,
     },
     total_guest: {
@@ -34,9 +34,17 @@ const roomSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    roomImage: {
+    // roomImage: {
+    //   type: String,
+    //   required: true,
+    // }, 
+    thumbnailImage: {
       type: String,
-      required: true,
+    
+    },
+    roomImages: {
+      type: [String],
+      default: [],
     },
     from: {
       type: Date,
@@ -49,22 +57,18 @@ const roomSchema = new mongoose.Schema(
     hostInfo: {
       name: {
         type: String,
-       
       },
       email: {
         type: String,
-       
-      }, 
+      },
       photoUrl: {
         type: String,
-        
       },
     },
   },
   { timestamps: true },
 );
 
+const RoomData = mongoose.model("RoomData", roomSchema);
 
-const RoomData=mongoose.model("RoomData",roomSchema)
-
-export default RoomData
+export default RoomData;

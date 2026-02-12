@@ -1,20 +1,21 @@
 import roomData from "../models/room.js";
 
 export const addRoom = async (req, res) => {
+  console.log('addRomm controller has been hitted by here')
   try {
     const rooms = req.body;
 
     const newRoom = new roomData(rooms);
 
     const savedRoom = await newRoom.save();
-    console.log(rooms, "this is room data from controllers");
+    console.log(rooms, "this is room data from controllers",newRoom,'this are');
     res.status(201).json({
       success: true,
       message: "Room added successfully",
       data: savedRoom,
     });
   } catch (error) {
-    console.log(error);
+    console.log(error,'this is room add error');
     res.status(500).json({
       success: false,
       message: "Failed to add room",
