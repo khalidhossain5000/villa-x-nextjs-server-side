@@ -26,7 +26,7 @@ export const addRoom = async (req, res) => {
 
 export const getAllRooms = async (req, res) => {
   try {
-    const { category,email } = req.query;
+    const { category,email,search } = req.query;
 
     let query = {};
    
@@ -35,6 +35,10 @@ export const getAllRooms = async (req, res) => {
     }
     if (email) {
           query["hostInfo.email"] = email;
+    }
+
+    if(search){
+      query.category=search
     }
     const allRoomData = await roomData.find(query).sort({ createdAt: -1 });
     res.status(200).json({
