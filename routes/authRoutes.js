@@ -1,7 +1,7 @@
 import express from 'express'
 
 import { registerUserSchema } from '../validation/userValidation.js'
-import { getUserData, getUserInfo, getUserRole, registerUser, updateUser, updateUserRoleAdminApi } from '../controllers/authControllers.js'
+import { getUserData, getUserInfo, getUserRole, registerUser, updateName, updateUser, updateUserRoleAdminApi } from '../controllers/authControllers.js'
 import { validateRequest } from '../middleware/registerUserValidate.js'
 import { verifyFbToken } from '../middleware/verifyFbToken.js'
 import { verifyAdmin } from '../middleware/verifyAdmin.js'
@@ -22,7 +22,7 @@ router.get('/single-users',verifyFbToken,getUserInfo)
 //update user this also need user validation
 router.patch('/update-user/:userEmail',verifyFbToken,updateUser)
 
-
+router.patch('/update-name/:email',verifyFbToken,updateName)
 
 
 

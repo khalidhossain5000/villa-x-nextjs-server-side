@@ -126,6 +126,57 @@ export const updateUser = async (req, res) => {
   }
 };
 
+//update name
+
+export const updateName = async (req, res) => {
+  console.log(req.user,'this user',req.params,req.name,'name and params')
+  try {
+    const { email } = req.params; // email from URL params
+    const { name } = req.body;
+
+    if (!email) {
+      return res.status(400).json({
+        success: false,
+        message: "Email is required in params",
+      });
+    }
+
+    if (!name) {
+      return res.status(400).json({
+        success: false,
+        message: "Name is required",
+      });
+    }
+
+    // find user by email and update fullName
+    const updatedUser = await User.findOneAndUpdate(
+      { email: email },
+      { fullName: name },
+      { new: true } // return the updated document
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Name updated successfully",
+      user: updatedUser,
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 
 //PATCH REQUST FOR MAKING USER ROLE TO HOST AND ADMINA DN REMOVING HOST SECURITY FOR ADMIN ONLY MIDDLEWARE WILL BE ADDED HERE AND WILL FIX IT SON 
 
