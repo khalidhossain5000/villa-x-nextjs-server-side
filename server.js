@@ -7,6 +7,7 @@ import roomRoutes from './routes/roomRoutes.js'
 import paymentRoutes from './routes/paymentRoutes.js'
 import bookingRoutes from './routes/bookingRoutes.js'
 import roomCancelRoutes from './routes/roomCancelRoutes.js'
+import statsRoutes from './routes/statsRoutes.js'
 // Configure dotenv
 dotenv.config();
 
@@ -38,6 +39,9 @@ app.use("/api", bookingRoutes);
 
 //room cancel req here routes
 app.use("/api",roomCancelRoutes)
+
+//stats data get routes
+app.use('/api/stats',statsRoutes)
 //mongoDb and mongoose connection starts here
 
 try{

@@ -1,7 +1,6 @@
 import roomData from "../models/room.js";
 
 export const addRoom = async (req, res) => {
-  console.log('addRomm controller has been hitted by here')
   try {
     const rooms = req.body;
 
