@@ -148,3 +148,6 @@ export const getHostChartData = async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
+
+
+// admin stats api are below
