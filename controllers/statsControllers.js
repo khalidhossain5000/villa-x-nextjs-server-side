@@ -1,6 +1,7 @@
 import User from "../models/auth.js";
 import Booking from "../models/bookingInfo.js";
 import Room from "../models/room.js";
+import RoomCancelRequest from "../models/roomCancelRequest.js"
 // Categories color map
 const categoryColors = {
   Beach: "#facc15",
@@ -229,5 +230,35 @@ export const getAdminStatsData = async (req, res) => {
   } catch (error) {
     console.error("Admin Stats API Error:", error);
     res.status(500).json({ message: "Server Error" });
+  }
+};
+
+
+
+
+//guest user stats api is here
+
+export const getGuestStatsData = async (req, res) => {
+  try {
+    const guestEmail = req.params.guestEmail;
+
+    // 1. My Bookings
+    const totalBookings = await BookingInfos.countDocuments({ "guest.email": guestEmail });
+
+    // 2. Room Cancel Requests
+    const totalCancelRequests = await RoomCancelRequests.countDocuments({ userEmail: guestEmail });
+
+    // 3. Total Spent
+    const bookings = await BookingInfos.find({ "guest.email": guestEmail });
+    const totalSpent = bookings.reduce((sum, booking) => sum + booking.price, 0);
+
+    res.status(200).json({
+      myBookings: totalBookings,
+      roomCancelRequests: totalCancelRequests,
+      totalSpent: totalSpent
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Something went wrong" });
   }
 };
