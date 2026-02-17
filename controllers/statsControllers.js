@@ -1,6 +1,24 @@
+import User from "../models/auth.js";
 import Booking from "../models/bookingInfo.js";
 import Room from "../models/room.js";
-
+// Categories color map
+const categoryColors = {
+  Beach: "#facc15",
+  Mountain: "#22d3ee",
+  Modern: "#10b981",
+  Countryside: "#a855f7",
+  Pools: "#3b82f6",
+  Islands: "#f97316",
+  Lake: "#0ea5e9",
+  Skiing: "#f43f5e",
+  Castles: "#8b5cf6",
+  Caves: "#6366f1",
+  Camping: "#16a34a",
+  Arctic: "#38bdf8",
+  Desert: "#fbbf24",
+  Barns: "#f87171",
+  Lux: "#eab308",
+}
 export const getHostStats = async (req, res) => {
   try {
     const { hostEmail } = req.params;
@@ -151,3 +169,65 @@ export const getHostChartData = async (req, res) => {
 
 
 // admin stats api are below
+
+export const getAdminStatsData = async (req, res) => {
+  try {
+    const { adminEmail } = req.params;
+
+    if (!adminEmail) {
+      return res.status(400).json({ message: "Admin email is required" });
+    }
+
+    // Total Users
+    const totalUsers = await User.countDocuments({});
+
+    // Total Rooms
+    const totalRooms = await Room.countDocuments({});
+
+    //  Role-based users (Pie chart)
+    const roleAggregation = await User.aggregate([
+      {
+        $group: {
+          _id: "$userRole",
+          count: { $sum: 1 },
+        },
+      },
+    ]);
+
+    const roleChartData = roleAggregation.map(item => ({
+      role: item._id,
+      users: item.count,
+      fill: item._id === "Admin" ? "#310cef" :
+            item._id === "Host" ? "#7e0cbb" :
+            "#10002e", // Guest or other
+    }));
+
+    // 4 Room Category distribution (Pie chart)
+    const categoryAggregation = await Room.aggregate([
+      {
+        $group: {
+          _id: "$category",
+          count: { $sum: 1 },
+        },
+      },
+    ]);
+
+    const roomCategoryChartData = categoryAggregation.map(item => ({
+      category: item._id,
+      rooms: item.count,
+      fill: categoryColors[item._id] || "#9ca3af" // default gray if not in map
+    }));
+
+    // Response
+    res.status(200).json({
+      totalUsers,
+      totalRooms,
+      roleChartData,
+      roomCategoryChartData,
+    });
+
+  } catch (error) {
+    console.error("Admin Stats API Error:", error);
+    res.status(500).json({ message: "Server Error" });
+  }
+};
