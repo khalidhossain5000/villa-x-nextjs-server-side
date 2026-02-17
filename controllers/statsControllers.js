@@ -2,6 +2,7 @@ import User from "../models/auth.js";
 import Booking from "../models/bookingInfo.js";
 import Room from "../models/room.js";
 import RoomCancelRequest from "../models/roomCancelRequest.js"
+import BookingInfo from "../models/bookingInfo.js"
 // Categories color map
 const categoryColors = {
   Beach: "#facc15",
@@ -243,13 +244,13 @@ export const getGuestStatsData = async (req, res) => {
     const guestEmail = req.params.guestEmail;
 
     // 1. My Bookings
-    const totalBookings = await BookingInfos.countDocuments({ "guest.email": guestEmail });
+    const totalBookings = await BookingInfo.countDocuments({ "guest.email": guestEmail });
 
     // 2. Room Cancel Requests
-    const totalCancelRequests = await RoomCancelRequests.countDocuments({ userEmail: guestEmail });
+    const totalCancelRequests = await RoomCancelRequest.countDocuments({ userEmail: guestEmail });
 
     // 3. Total Spent
-    const bookings = await BookingInfos.find({ "guest.email": guestEmail });
+    const bookings = await BookingInfo.find({ "guest.email": guestEmail });
     const totalSpent = bookings.reduce((sum, booking) => sum + booking.price, 0);
 
     res.status(200).json({
