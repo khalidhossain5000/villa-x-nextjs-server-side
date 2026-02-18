@@ -18,7 +18,8 @@ app.use(express.json());
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:3000", 
+    // origin: "http://localhost:3000", 
+    origin: "https://villa-x-nextjs-client-side.vercel.app", 
     credentials: true, 
   })
 );
@@ -45,7 +46,7 @@ app.use('/api/stats',statsRoutes)
 //mongoDb and mongoose connection starts here
 
 try{
-    const db=await mongoose.connect(process.env.mongoDb_uri)
+    const db=await mongoose.connect(process.env.mongoDB_uri)
      console.log("MongoDB connected:", db.connection.host);
 }
 catch (error) {
