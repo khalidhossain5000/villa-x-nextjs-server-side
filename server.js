@@ -18,8 +18,8 @@ app.use(express.json());
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:3000", 
-    // origin: "https://villa-x-nextjs-client-side.vercel.app", 
+    // origin: "http://localhost:3000", 
+    origin: "https://villa-x-nextjs-client-side.vercel.app", 
     credentials: true, 
   })
 );
