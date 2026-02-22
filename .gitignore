@@ -2,7 +2,7 @@
 node_modules
 dist
 dist-ssr
-
+.env
 .vercel
 
 villa-x-firebase-token-verification.json
