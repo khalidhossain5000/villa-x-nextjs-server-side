@@ -72,3 +72,33 @@ export const delteMyListingRoom=async(req,res)=>{
   const result =await roomData.findByIdAndDelete(id)
   res.send({result,message:'room delted successfully here over'})
 }
+
+
+//update room
+export const updateRoom=async(req,res)=>{
+  const roomId=req.params.id
+
+  const updatedData=req.body
+console.log(updatedData,'room data',roomId,'room id')
+
+
+if(!roomId || !updatedData) return res.status(400).json({
+  success:false,
+  message:"Room ID and updated data are required"
+})
+
+  try{
+    const updatedRoom=await roomData.findByIdAndUpdate(roomId,updatedData,{new:true})
+    res.status(200).json({
+      success:true,
+      message:"Room updated successfully",
+      data:updatedRoom
+    })
+  } catch(error){
+    res.status(500).json({
+      success:false,
+      message:"Failed to update room",
+      error:error.message
+    })  
+  }
+}
