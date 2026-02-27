@@ -18,6 +18,9 @@ const roomCancelRequestSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    cancelReason:{
+      type:String
+    },
     status: {
       type: String,
       enum: ["requested", "approved", "rejected"],

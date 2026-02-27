@@ -14,13 +14,20 @@ export const roomCancelRequestByGuest = async (req, res) => {
 };
 
 export const getAllRoomCancelRequests = async (req, res) => {
-  {
+  try{
     const {hostEmail}=req.params
     const cancelRequests = await roomCancelRequest.find({hostEmail});
 
     res.status(200).json({
       message: "All room cancel requests retrieved successfully",
       cancelRequests,
+    });
+  }
+  catch(error){
+    console.error("Error retrieving cancel requests:", error);
+    res.status(500).json({
+      message: "An error occurred while retrieving cancel requests",
+      error: error.message,
     });
   }
 };

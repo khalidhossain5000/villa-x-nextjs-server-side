@@ -7,7 +7,7 @@ const router=express.Router()
 
 
 router.post('/room-cancel-request',verifyFbToken,roomCancelRequestByGuest)
-router.get('/all-room-cancel-requests',verifyFbToken,getAllRoomCancelRequests)
+router.get('/all-room-cancel-requests/:hostEmail',verifyFbToken,verifyHost,getAllRoomCancelRequests)
 
 router.patch('/update-status/:id',verifyFbToken,verifyHost,updateCancelRequestStatus)
 
