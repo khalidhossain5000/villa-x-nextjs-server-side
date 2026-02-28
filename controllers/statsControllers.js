@@ -247,7 +247,7 @@ export const getGuestStatsData = async (req, res) => {
     const totalBookings = await BookingInfo.countDocuments({ "guest.email": guestEmail });
 
     // 2. Room Cancel Requests
-    const totalCancelRequests = await RoomCancelRequest.countDocuments({ userEmail: guestEmail });
+    const totalCancelRequests = await RoomCancelRequest.countDocuments({ "requestedByInfo.email": guestEmail });
 
     // 3. Total Spent
     const bookings = await BookingInfo.find({ "guest.email": guestEmail });
