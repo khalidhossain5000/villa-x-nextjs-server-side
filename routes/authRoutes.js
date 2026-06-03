@@ -1,7 +1,7 @@
 import express from 'express'
 
 import { registerUserSchema } from '../validation/userValidation.js'
-import { getUserData, getUserInfo, getUserRole, registerUser, updateName, updateUser, updateUserRoleAdminApi } from '../controllers/authControllers.js'
+import { getUserData, getUserInfo, getUserRole, registerUser, socialLogin, updateName, updateUser, updateUserRoleAdminApi } from '../controllers/authControllers.js'
 import { validateRequest } from '../middleware/registerUserValidate.js'
 import { verifyFbToken } from '../middleware/verifyFbToken.js'
 import { verifyAdmin } from '../middleware/verifyAdmin.js'
@@ -11,8 +11,11 @@ const router=express.Router()
 //user registeration data save api
 router.post('/register',validateRequest(registerUserSchema),registerUser)
 
+
+router.post("/social-login", socialLogin);
+
 // get role by email dont need admin but need token validation
-router.get("/role",verifyFbToken, getUserRole);
+router.get("/role/:email", getUserRole);//verifyFbToken
 //admin route need both valiation
 router.get('/all-users'  , verifyFbToken,  verifyAdmin,   getUserData)
 

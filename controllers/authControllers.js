@@ -7,6 +7,7 @@ export const registerUser = async (req, res) => {
 
     // Check if user already exists
     const existingUser = await User.findOne({ email });
+    console.log(existingUser,'this is exisitng user')
     if (existingUser) {
       return res.status(400).json({ error: "User already exists" });
     }
@@ -32,13 +33,48 @@ export const registerUser = async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 };
+// controllers/authController.js
+export const socialLogin = async (req, res) => {
+  try {
+    const { fullName, email, image } = req.body;
 
+    if (!email) {
+      return res.status(400).json({ error: "Email is required" });
+    }
+
+    // 1. Check existing
+    let user = await User.findOne({ email });
+
+    if (!user) {
+      // 2. Create new
+      user = new User({
+        fullName,
+        email,
+        image,
+        userRole: "guest",
+        status: "verified",
+      });
+
+      await user.save();
+    }
+
+    // 3. Always success response
+    return res.status(200).json({
+      message: "Social login success",
+      user,
+    });
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
 // Get user role by email
 export const getUserRole = async (req, res) => {
-  
+  console.log('user role has been hitted')
   try {
-    const { email } = req.query;
-
+    const { email } = req.params;
+console.log(email,'inside get user role controller here','get role hitedn')
     // validation
     if (!email) {
       return res.status(400).json({ error: "Email query is required" });

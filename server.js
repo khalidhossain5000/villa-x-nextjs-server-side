@@ -8,9 +8,11 @@ import paymentRoutes from './routes/paymentRoutes.js'
 import bookingRoutes from './routes/bookingRoutes.js'
 import roomCancelRoutes from './routes/roomCancelRoutes.js'
 import statsRoutes from './routes/statsRoutes.js'
+import dns from "dns"
 // Configure dotenv
 dotenv.config();
-
+//dns issue fixed and setup here
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
 const app = express()
 const port = process.env.PORT || 5000;
 
@@ -18,8 +20,11 @@ app.use(express.json());
 // Middleware
 app.use(
   cors({
-    // origin: "http://localhost:3000", 
-    origin: "https://villa-x-nextjs-client-side.vercel.app", 
+    origin: [
+      "http://localhost:3000",
+      "https://villa-x-nextjs-client-side.vercel.app",
+      "https://villla-x-nextjs-server-side.vercel.app",
+    ],
     credentials: true, 
   })
 );
