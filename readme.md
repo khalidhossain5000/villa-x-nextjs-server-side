@@ -18,7 +18,6 @@ https://villa-x-nextjs-client-side.vercel.app
 | 2      | host@villax.com  | host@villax.com  | Host  |
 | 3      | guest@villax.com | guest@villax.com | Guest |
 
-Use the following demo credentials to explore different dashboards and role-based features of the platform.
 
 ## Features
 
