@@ -23,7 +23,6 @@ app.use(
     origin: [
       "http://localhost:3000",
       "https://villa-x-nextjs-client-side.vercel.app",
-      "https://villla-x-nextjs-server-side.vercel.app",
     ],
     credentials: true, 
   })
