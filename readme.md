@@ -10,13 +10,7 @@ With a focus on clean UI design, structured dashboards, and secure stripe transa
 
 https://villa-x-nextjs-client-side.vercel.app
 
-## 🔐 Role-Based Authentication Credentials :
 
-| Serial | Email            | Password         | Role  |
-| ------ | ---------------- | ---------------- | ----- |
-| 1      | admin@villax.com | admin@villax.com | Admin |
-| 2      | host@villax.com  | host@villax.com  | Host  |
-| 3      | guest@villax.com | guest@villax.com | Guest |
 
 
 ## Features
