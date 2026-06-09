@@ -117,5 +117,4 @@ FIREBASE_ADMIN_SDK
 
 4.Run the development server
 
-````bash
-npm run dev
+<!-- j -->
