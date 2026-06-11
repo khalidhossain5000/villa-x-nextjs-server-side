@@ -116,5 +116,3 @@ FIREBASE_ADMIN_SDK
 ```
 
 4.Run the development server
-
-typically npm run dev or check script
