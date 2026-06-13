@@ -116,4 +116,3 @@ FIREBASE_ADMIN_SDK
 ```
 
 4.Run the development server
-` npm run dev using run thsi on cmd
