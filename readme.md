@@ -10,9 +10,6 @@ With a focus on clean UI design, structured dashboards, and secure stripe transa
 
 https://villa-x-nextjs-client-side.vercel.app
 
-
-
-
 ## Features
 
 - Redux for state management
@@ -38,7 +35,7 @@ https://villa-x-nextjs-client-side.vercel.app
 - tanstack query for data fetch and cache.
 - Integration of Charts in the admin adn host dashboard.
 - Add room functionality in host dashboard.
-- Room galery and many more.
+
 
 ## Npm Packages :
 
