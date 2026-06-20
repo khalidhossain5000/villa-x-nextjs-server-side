@@ -4,7 +4,7 @@
 
 VillaX is a modern full-stack room rental platform designed to provide a seamless and intuitive booking experience. It combines a high-performance Next.js frontend with a structured Node.js and MongoDB(mongoose) backend to efficiently manage dynamic listings, reservations, and user interactions. The platform supports multiple user roles and ensures secure authentication while handling property management, booking workflows, and administrative controls.
 
-With a focus on clean UI design, structured dashboards, and secure stripe transactions, VillaX enables guests to explore and reserve accommodations, hosts to manage listings and availability, and administrators to oversee user roles and system operations with efficiency and scalability in mind.
+With a focus on clean UI design, structured dashboards, and secure stripe transactions, VillaX enables guests to explore and reserve accommodations, hosts to manage listings and availability, and administrators to oversee user roles and system operations with efficiency and scalability in mind.With organized backend folder strucure and good maintain clean api code to be written.
 
 ## 🚀🚀 Live Site :
 
