@@ -1,4 +1,4 @@
-# Project Title : VillaX Room Booking Rental Website Server Application
+# Project Title : VillaX Room Booking Rental Website Server Side Application
 
 # Website Name: VillaX
 
