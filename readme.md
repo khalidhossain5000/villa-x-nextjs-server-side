@@ -1,4 +1,4 @@
-# Project Title : VillaX Room Booking Rental Website Server
+# Project Title : VillaX Room Booking Rental Server
 
 # Website Name: VillaX
 
@@ -26,15 +26,10 @@ https://villa-x-nextjs-client-side.vercel.app
 - Awesome interface with light and dark mode support.
 - Notification and Toast Alerts.
 - Role assignment and user management by admins.
-- Room booking , revenue etc stats and chart in each role dashboard.
 - CORS configured securely
 - Token Authentication.
 - Form validation with React Hook Form.
 - zod validation with react hook form .
-- shadcdn awesome interface .
-- tanstack query for data fetch and cache.
-- Integration of Charts in the admin adn host dashboard.
-- Add room functionality in host dashboard.
 - Room galery and many more.
 
 ## Npm Packages :
