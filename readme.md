@@ -26,7 +26,6 @@ https://villa-x-nextjs-client-side.vercel.app
 - Awesome interface with light and dark mode support.
 - Notification and Toast Alerts.
 - Role assignment and user management by admins.
-- CORS configured securely
 - Token Authentication.
 - Form validation with React Hook Form.
 - zod validation with react hook form .
