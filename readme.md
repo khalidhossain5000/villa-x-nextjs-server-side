@@ -15,7 +15,6 @@ https://villa-x-nextjs-client-side.vercel.app
 - Redux for state management
 - Next.js powers dynamic routing across the platform.
 - Secure Authentication with Firebase.
-- Role-based access control (Admin, Host, Guest).
 - User profile management and editing.
 - Secure room booking and payment with Stripe.
 - Responsive design optimized for desktop, tablet, and mobile.
