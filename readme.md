@@ -61,8 +61,6 @@ https://villa-x-nextjs-client-side.vercel.app
 - recharts
 - redux
 - tailwind-merge
-- zod
-- sweetalert2
 
 ## Npm Packages :
 
