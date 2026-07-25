@@ -43,7 +43,6 @@ https://villa-x-nextjs-client-side.vercel.app
 - swiper js.
 - react-spinners
 - react-hot-toast
-- headlessui/react
 - react hookform/resolvers
 - radix-ui/react-dialog
 - reduxjs/toolkit
