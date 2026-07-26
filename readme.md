@@ -49,7 +49,6 @@ https://villa-x-nextjs-client-side.vercel.app
 - @stripe/react-stripe-js
 - @tanstack/react-query
 - query string
-- clsx
 - lucide react
 - date-fns
 - firebase
