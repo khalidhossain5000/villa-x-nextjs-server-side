@@ -48,8 +48,6 @@ https://villa-x-nextjs-client-side.vercel.app
 - reduxjs/toolkit
 - @stripe/react-stripe-js
 - @tanstack/react-query
-- query string
-- lucide react
 - date-fns
 - firebase
 - react-date-range
