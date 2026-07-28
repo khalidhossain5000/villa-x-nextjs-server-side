@@ -56,7 +56,6 @@ https://villa-x-nextjs-client-side.vercel.app
 - react-redux
 - recharts
 - redux
-- tailwind-merge
 
 ## Npm Packages :
 
